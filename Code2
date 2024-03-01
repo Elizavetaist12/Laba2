@@ -1,0 +1,22 @@
+import re
+
+with open("C://Users//ЛизаМиш//PycharmProjects//test1//test1.txt", 'r', encoding="utf8") as file:
+    line = file.readline()
+
+    for i in file:
+        index = 0
+        line = i.rstrip()
+        if re.fullmatch('[0-1]*11[0-1]*', line):
+            print("Число:", i)
+            for i in re.finditer('11', line):
+                index = i.start()
+                output = re.sub('11', '', line)
+                if len(output) != 0:
+                    print("Число, исключая '11':", output)
+                else:
+                    print("Убрали все символы", end='\n')
+                print("Номер позиции:", index, end='\n')
+                print()
+        else:
+            continue
+print()
